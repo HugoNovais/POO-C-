@@ -1,5 +1,6 @@
 ﻿
 using CursoPOO;
+using CursoPOO.Frete.Impl;
 using CursoPOO.Pagamento;
 
 /*Item carrinho = new Item();
@@ -51,6 +52,20 @@ foreach (Item item in minhaCesta.Itens)
     Console.WriteLine($"- {item}");
 }
 Console.WriteLine(minhaCesta);
+
+CalcularFreteCorreios calcularFrete = SelecionarFrete.Informar();
+if (calcularFrete != null)
+{
+    var opcaoFrete = calcularFrete.Calcular(minhaCesta);
+    if (opcaoFrete != null)
+    {
+        Console.WriteLine($"Frete selecionado: {opcaoFrete.Nome}");
+    }
+    else
+    {
+        Console.WriteLine($"Frete não informado");
+    }
+}
 
 IPagamento pagamento = SelecionarPagamento.Informar();
 pagamento.Processar(minhaCesta);
